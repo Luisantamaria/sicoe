@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app-eventos">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sistema Control de Eventos, para la Universidad Peruana Unión Filial Tarapoto - 2016">
+    <meta name="author" content="Ing. Luis Santa María Ticlavilca">
+
+    <title>SICOE</title>
+    <link href="../../recursos/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../recursos/css/eventos-admin.css" rel="stylesheet">
+    <link href="../../recursos/plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <script src="../../recursos/plugins/angularJs/angular.min.js"></script>
+    <script src="../../recursos/plugins/angularJs/angular-sanitize.min.js"></script>
+    <script src="../../recursos/js/angularApp.js"></script>
+</head>
+<body ng-controller="ctr-eventos">
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="dashboard.evt">SICOE</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <strong><small>Usuario:</small> ${usuario}</Strong> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="close.evt"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - se colapsan cuando el tamaño de pantalla se reduce -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                       <a>Sistema Control de Eventos</a>
+                   </li>
+                    <li class="">
+                        <a href="dashboard.evt"><i class="fa fa-fw fa-dashboard"></i> Asistencia</a>
+                    </li>                   
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#repAsis"><i class="fa fa-line-chart"></i> Reportes <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="repAsis" class="collapse">
+                            <li>
+                                <a href="./redirect.evt?rd=rpasis">Reporte Asistencia</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#creaAsis"><i class="fa fa-cog"></i> Mantenimiento <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="creaAsis" class="collapse">
+                            <li>
+                                <a href="./redirect.evt?rd=casis">Crear Asistencia</a>
+                            </li>
+                        </ul>
+                    </li>                
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="page-header">
+                            Asistencia
+                            <small>Crear asistencia</small>
+                        </h4>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="dashboard.evt">Asistencia</a>
+                            </li>
+                            
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">    
+                    <div class="container-evt col-xs-12 col-sm-12 col-md-12 col-lg-12 col-lg-offset-0">
+                       
+                       
+                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-md-offset-1">
+                        
+                        
+                         <div class="table-responsive marcocasis">
+                         <!--<form action="" class="form-inline">
+                              <div class="form-group col-lg-6">
+                                <label for="organizador" class="col-md-4">Organizador</label>
+                                <div class="input-group col-md-8 combo">
+                                   <select id="organizador" class="form-control">
+                                        <option>FIA</option>
+                                        <option>FCE</option>
+                                        <option>FCS</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="form-group col-lg-6">
+                                <label for="evento" class="col-md-3">Evento</label>
+                                <div class="input-group col-md-9 combo">
+                                   <select id="evento" class="form-control">
+                                        <option>evento1</option>
+                                        <option>evento2</option>
+                                    </select>
+                                  </div>
+                              </div>
+                          </form>-->
+                          
+                          
+                          <form class="form-horizontal col-xs-12 col-md-6 col-md-offset-3">
+                             
+                              <div class="form-group">
+                                <label for="organizador" class="col-sm-3 control-label">Organizador</label>
+                                <div class="col-sm-9">
+                                   <select id="organizador" class="form-control">
+                                        <option>FIA</option>
+                                        <option>FCE</option>
+                                        <option>FCS</option>
+                                    </select>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="evento" class="col-sm-3 control-label">Evento</label>
+                                <div class="col-sm-9">
+                                   <select id="evento" class="form-control">
+                                        <option>evento1</option>
+                                        <option>evento2</option>
+                                    </select>
+                                </div>
+                              </div>
+                            </form>     
+                               
+                                <table class="table table-bordered table-hover table-striped tabla-rep">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Sesión</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Descripción</th>
+                                            <th>estado</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>dia1</td>
+                                        <td>11/11/2016</td>
+                                        <td>8:00</td>
+                                        <td>Coloquio de la EP Sistemas</td>
+                                        <td>activo</td>
+                                        <td>
+                                             <div class="orm-control pull-left">
+                                                  <a id="<%=modulo.getIdmodulo()%>" class="btn btn-block btn-warning btn-xs editar" data-toggle="modal" data-target="#editarMod" title="Actualizar"> 
+                                                    <i class="fa fa-pencil"></i>
+                                                  </a>
+                                              </div>
+
+                                              <div class="orm-control pull-left">
+                                                  <a id="<%=modulo.getIdmodulo()%>" class="btn btn-block btn-danger btn-xs eliminar" data-toggle="modal" data-target="#eliminarModulo<%=modulo.getIdmodulo()%>" title="Eliminar"> 
+                                                    <i class="fa fa-trash-o"></i>
+                                                  </a>
+                                              </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                          
+                           
+                             
+                         
+                          
+                          
+                          <!--<form class="form-horizontal">
+                             
+                              <div class="form-group">
+                                <label for="organizador" class="col-sm-2 control-label">Organizador</label>
+                                <div class="col-sm-10">
+                                   <select id="organizador" class="form-control">
+                                        <option>FIA</option>
+                                        <option>FCE</option>
+                                        <option>FCS</option>
+                                    </select>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="evento" class="col-sm-2 control-label">Evento</label>
+                                <div class="col-sm-10">
+                                   <select id="evento" class="form-control">
+                                        <option>evento1</option>
+                                        <option>evento2</option>
+                                    </select>
+                                </div>
+                              </div>
+                            </form>  
+                             -->
+                             
+                              
+                           
+                          
+                           
+                       </div>
+                       
+                        
+                        
+                        
+                        
+                    </div>   
+                 </div>
+                            
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../../recursos/plugins/jquery/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../recursos/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

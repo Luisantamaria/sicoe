@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app-eventos">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sistema Control de Eventos, para la Universidad Peruana Unión Filial Tarapoto - 2016">
+    <meta name="author" content="Ing. Luis Santa María Ticlavilca">
+
+    <title>SICOE</title>
+    <link href="../../recursos/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../recursos/css/eventos-admin.css" rel="stylesheet">
+    <link href="../../recursos/plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <script src="../../recursos/plugins/angularJs/angular.min.js"></script>
+    <script src="../../recursos/plugins/angularJs/angular-sanitize.min.js"></script>
+    <script src="../../recursos/js/angularApp.js"></script>
+    
+    <style>
+    /*.navbar-inverse {
+      background-color: #fd7e11;
+      border-color: #de5005;
+    }
+    .navbar-inverse .navbar-brand {
+      color: #e3dede;
+    }
+    .navbar-inverse .navbar-brand:hover,
+    .navbar-inverse .navbar-brand:focus {
+      color: #fff;
+      background-color: transparent;
+    }
+    .navbar-inverse .navbar-text {
+      color: #e3dede;
+    }
+    .navbar-inverse .navbar-nav > li > a {
+      color: #9d9d9d;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus {
+      color: #fff;
+      background-color: transparent;
+    }
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .active > a:hover,
+    .navbar-inverse .navbar-nav > .active > a:focus {
+      color: #fff;
+      background-color: #de5005;
+    }
+    .navbar-inverse .navbar-nav > .disabled > a,
+    .navbar-inverse .navbar-nav > .disabled > a:hover,
+    .navbar-inverse .navbar-nav > .disabled > a:focus {
+      color: #444;
+      background-color: transparent;
+    }
+    .navbar-inverse .navbar-toggle {
+      border-color: #333;
+    }
+    .navbar-inverse .navbar-toggle:hover,
+    .navbar-inverse .navbar-toggle:focus {
+      background-color: #333;
+    }
+    .navbar-inverse .navbar-toggle .icon-bar {
+      background-color: #fff;
+    }
+    .navbar-inverse .navbar-collapse,
+    .navbar-inverse .navbar-form {
+      border-color: #ff5800;
+    }
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a:focus {
+      color: #fff;
+      background-color: #ff5800;
+    }
+    @media (max-width: 767px) {
+      .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
+        border-color: #ff5800;
+      }
+      .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+        background-color: #ff5800;
+      }
+      .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+        color: #9d9d9d;
+      }
+      .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+      .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #fff;
+        background-color: transparent;
+      }
+      .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+      .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+      .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #fff;
+        background-color: #ff5800;
+      }
+      .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
+      .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+      .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: #444;
+        background-color: transparent;
+      }
+    }
+    .navbar-inverse .navbar-link {
+      color: #9d9d9d;
+    }
+    .navbar-inverse .navbar-link:hover {
+      color: #fff;
+    }
+    .navbar-inverse .btn-link {
+      color: #9d9d9d;
+    }
+    .navbar-inverse .btn-link:hover,
+    .navbar-inverse .btn-link:focus {
+      color: #fff;
+    }
+    .navbar-inverse .btn-link[disabled]:hover,
+    fieldset[disabled] .navbar-inverse .btn-link:hover,
+    .navbar-inverse .btn-link[disabled]:focus,
+    fieldset[disabled] .navbar-inverse .btn-link:focus {
+      color: #444;
+    }*/
+    </style>
+    
+</head>
+
+<body ng-controller="ctr-eventos">
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../dasboard.evt">SICOE  -  Sistema Control de Eventos</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Luis Santa María <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Configuración</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="../close.evt"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - se colapsan cuando el tamaño de pantalla se reduce -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                   <li>
+                       <a>Luis Santa María - Admin</a>
+                   </li>
+                    <li class="active">
+                        <a href="./dasboard.evt"><i class="fa fa-fw fa-dashboard"></i> Asistencia</a>
+                    </li>
+                    <li>
+                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Registrar</a>
+                    </li>                    
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Reportes <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="./redirect.evt?rd=rpasis">Reporte Asistencia</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="page-header">
+                            Asistencia
+                            <small>Control de Asistencia</small>
+                        </h4>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Asistencia</a>
+                            </li>
+                            
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                
+                
+                    <div class="container-evt col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1"> 
+                       
+                       <div class="table-responsive marco">
+                            <table class="table table-bordered table-hover table-striped tabla-rep">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Voucher</th>
+                                        <th>Carne</th>
+                                        <th>Nombres</th>
+                                        <th>Apellido Paterno</th>
+                                        <th>Apellido Materno</th>
+                                        <th>Dni</th>
+                                        <th>EP</th>
+                                        <th>Asistencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="active">
+                                        <td>1</td>
+                                        <td>0245-cv451</td>
+                                        <td>201610845</td>
+                                        <td>Juan Miguel</td>
+                                        <td>Valdes</td>
+                                        <td>Sanchez</td>
+                                        <td>75124863</td>
+                                        <td>Sistemas</td>
+                                        <td>20.00</td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td>1</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>/index.html</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>32.3%</td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td>1</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>/index.html</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>32.3%</td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td>1</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>/index.html</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>32.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>/index.html</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>32.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>/index.html</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>32.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>/index.html</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+                                        <td>32.3%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       
+                       
+                    </div> 
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../../recursos/plugins/jquery/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../recursos/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+             
+            

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app-evt-login">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>SICOE - UPeU Tarapoto</title>
+
+        <!-- Bootstrap -->
+        <link href="recursos/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="recursos/plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="recursos/plugins/nprogress/nprogress.css" rel="stylesheet">
+        <!-- Animate.css -->
+        <link href="recursos/plugins/animate.css/animate.min.css" rel="stylesheet">    
+        <link href="recursos/login/css/custom.css" rel="stylesheet">
+        <style>
+            .msj{
+                color: rgba(229, 0, 0, 0.72);
+            }
+        </style>
+        <script src="recursos/plugins/angularJs/angular.min.js"></script>
+        <script src="recursos/plugins/angularJs/angular-sanitize.min.js"></script>
+        <script src="recursos/js/loginApp.js"></script>
+
+    </head>
+
+    <body ng-controller="ctr-login" class="login">
+        <div>
+
+            <div class="login_wrapper">
+                <div class="animate form login_form">
+                    <section class="login_content">
+
+                        <form id="frmlogin" ng-keypress="enviarFrmA($event)" method="POST" action="dashboard.evt">
+                            <h1>Formulario de acceso</h1>
+                            <div>
+                                <input type="text" class="form-control" placeholder="Usuario" ng-model="data.usuario" required="" autofocus />
+                            </div>
+                            <div>
+                                <input type="password" class="form-control" placeholder="Clave" ng-model="data.clave" required="" />
+                            </div>
+                            <div>
+                                <button class="btn btn-default submit" ng-click="data.comprobar()" type="button">Iniciar sesión</button>
+                                <!-- <a class="btn btn-default submit" href="" ng-click="data.validar()">Iniciar sesión</a>-->
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="separator">
+                                <span class="msj" ng-bind-html="msj"></span>
+                                <div class="clearfix"></div>
+                                <br />
+
+                                <div>
+                                    <h1><i class="fa fa-google-wallet fa-2x"></i> ÉliTI Labs</h1>
+                                    <p>©2016 Todos los derechos reservados. ÉliTi Labs es una Start Up de la Universidad Peruana Unión - Filial Tarapoto. Privacidad y Términos</p>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </section>
+                </div>        
+            </div>
+        </div>
+    </body>
+</html>
